@@ -1,0 +1,49 @@
+Here is how you can make a simple Postman API request to test the composeEmail endpoint, considering the different types of input it can handle.
+
+1. Plain Text Request
+This is for when you want to send the job details as a simple text string.
+
+Postman Setup:
+
+Method: POST
+
+URL: http://localhost:3000/compose-email (assuming your server runs on port 3000)
+
+Body: raw -> JSON
+
+Content:
+
+JSON
+
+{
+    "jobDetails": "Job Title: Senior Software Engineer\nCompany: Tech Innovations Inc.\nResponsibilities: Develop and maintain web applications. Experience with Node.js and React is required.",
+    "notes": "I have experience in both Node.js and React, please highlight this in the email."
+}
+2. File Upload Request (for PDF, Image, or DOCX)
+This is for when you want to upload a job description file.
+
+Postman Setup:
+
+Method: POST
+
+URL: http://localhost:3000/compose-email
+
+Body: form-data
+
+Key-Value Pairs:
+
+Key: jobDetailsFile (This must exactly match the name you defined in upload.single('jobDetailsFile') in your Express server setup).
+
+Value: Select File from the dropdown menu on the right. Then, click "Select File" and choose your PDF, PNG, JPG, or DOCX file.
+
+Key: notes (This is optional).
+
+Value: Type in your additional notes as a text string (e.g., "This job looks great!").
+
+Important Notes:
+
+Server Must Be Running: Make sure your Express server is running before sending the request.
+
+File Field Name: The Key for the file upload (jobDetailsFile) is case-sensitive and must match what you passed to upload.single() in your server code.
+
+No "Content-Type" Header: Postman will automatically set the Content-Type header to multipart/form-data when you use the form-data body type, so you don't need to set it manually.
