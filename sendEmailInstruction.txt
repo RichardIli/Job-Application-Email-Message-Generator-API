@@ -1,0 +1,26 @@
+
+To test the /sendEmail endpoint in Postman, you can follow these steps:
+
+Set the URL: Set the request URL to http://localhost:3000/api/sendEmail. The application is running on port 3000, and the /sendEmail route is nested under the /api path.
+
+Set the Method: Change the request method to POST.
+
+Configure the Body:
+
+Select the Body tab.
+
+Choose raw and then JSON from the dropdown menu.
+
+Enter the following JSON object in the text area, replacing the placeholder values with your desired email details:
+
+JSON
+
+{
+    "to": "recipient@example.com",
+    "subject": "Test Email from Postman",
+    "text": "This is a plain text body.",
+    "html": "<h3>This is an HTML body.</h3>"
+}
+Send the Request: Click the Send button to send the request.
+
+The server will respond with a 200 OK status and the message "Email sent successfully!" if the email is sent successfully. If any required fields (to, subject, text, or html) are missing, the server will return a 400 Bad Request status with an error message. The server will return a 500 Internal Server Error if there's a problem sending the email.

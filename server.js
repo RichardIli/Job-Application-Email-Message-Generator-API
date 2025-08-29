@@ -2,7 +2,6 @@
 
 // Import required modules
 const express = require('express');
-const multer = require('multer');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
@@ -13,8 +12,6 @@ dotenv.config();
 // need to load the env before the routes
 const routes = require('./api/routes/routes.js');
 
-// Set up multer to handle file uploads
-const upload = multer({ storage: multer.memoryStorage() }); // Store the file in memory as a buffer
 
 // Create an Express application
 const app = express();

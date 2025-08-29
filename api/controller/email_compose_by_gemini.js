@@ -1,73 +1,3 @@
-// const fs = require('fs');
-// const path = require('path');
-// const pdf = require('pdf-parse');
-// const model = require('../config/gemini.js');
-
-// // Helper to call Gemini API and parse JSON
-// async function getComposedEmail(prompt) {
-//     const result = await model.generateContent(prompt);
-//     const responseText = result.response.text();
-//     try {
-//         // Parse the JSON response from the model
-//         return JSON.parse(responseText);
-//     } catch (err) {
-//         // Throw a more informative error message that includes the raw response
-//         throw new SyntaxError(`Failed to parse JSON response: ${err.message}. Raw response: ${responseText}`);
-//     }
-// }
-
-// const composedEmailSample = {
-//     "to": "<email retreived from jobDetails>",
-//     "subject": "<ai generated Subject based on the jobDetails>",
-//     "text": "<composed email body in plain text>",
-//     "html": "<leave it blank or just dont generate this field>",
-//     "actionNeeded": "<write a call to action like need to manualy fill a specific field on the generated text email body>"
-// };
-
-// exports.composeEmail = async (req, res) => {
-//     try {
-//         // job details can be a image, file or text
-//         // notes is a text
-//         const { jobDetails, notes } = req.body;
-//         if (!jobDetails) {
-//             return res.status(400).json({ error: "Missing job details" });
-//         }
-
-//         // Path to your CV file. Make sure this path is correct.
-//         const myCVPath = path.join(__dirname, 'path/to/your/cv.pdf');
-
-//         // Read the PDF file into a buffer
-//         const dataBuffer = fs.readFileSync(myCVPath);
-
-//         // Parse the PDF buffer to get the text content
-//         const data = await pdf(dataBuffer);
-//         const myCVContent = data.text;
-
-//         const emailPrompt = `Compose a professional job application email based on the following information. The output must be a valid JSON object.
-
-//         **Job Details:**
-//         ${jobDetails}
-
-//         **My CV Content:**
-//         ${myCVContent}
-
-//         **Additional Notes:**
-//         ${notes || 'N/A'}
-
-//         Keep the email concise and to the point. The output structure must exactly match the following JSON schema. The "html" field should be left blank or omitted.
-
-//         ${JSON.stringify(composedEmailSample, null, 2)}`;
-
-//         const emailResponse = await model.getComposedEmail(emailPrompt);
-
-//         res.status(200).json(emailResponse);
-
-//     } catch (error) {
-//         console.error('Error composing email:', error);
-//         res.status(500).json({ error: error.message });
-//     }
-// }; 
-
 const fs = require('fs');
 const path = require('path');
 const pdf = require('pdf-parse');
@@ -160,7 +90,7 @@ exports.composeEmail = async (req, res) => {
         }
 
         // Path to your CV file. Make sure this path is correct.
-        const myCVPath = path.join(__dirname, 'path/to/your/cv.pdf');
+        const myCVPath = path.join(__dirname, '../../assets/Richard_R._Ili_CV.pdf');
         const myCVContent = await extractTextFromPDF(fs.readFileSync(myCVPath));
 
         const emailPrompt = `Compose a professional job application email based on the following information. The output must be a valid JSON object.
