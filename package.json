@@ -2,10 +2,10 @@
   "name": "job-application-email-message-generator",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "api/server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon api/server/server.js"
   },
   "keywords": [],
   "author": "",
