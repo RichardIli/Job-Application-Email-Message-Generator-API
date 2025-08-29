@@ -10,7 +10,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // need to load the env before the routes
-const routes = require('./api/routes/routes.js');
+const routes = require('../routes/routes.js');
 
 
 // Create an Express application
