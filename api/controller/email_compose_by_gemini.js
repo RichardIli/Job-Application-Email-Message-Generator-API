@@ -42,6 +42,7 @@ const composedEmailSample = {
     "actionNeeded": "<write a call to action like need to manualy fill a specific field on the generated text email body>"
 };
 
+// main function
 exports.composeEmail = async (req, res) => {
     try {
         const { jobDetails, notes } = req.body;
@@ -75,7 +76,8 @@ exports.composeEmail = async (req, res) => {
             }
 
             // Create a prompt to summarize the extracted details
-            const extractedDetailsPrompt = `Extract the most important details (job title, company, key responsibilities, qualifications, and any contact info) from the following job description text and return it as a single block of plain text.
+            const extractedDetailsPrompt = `Extract the most important details (job title, company, key responsibilities, qualifications, and any contact info) from 
+            the following job description text and return it as a single block of plain text.
 
             **Job Description Text:**
             ${jobDetailsContent}`;
